@@ -1,0 +1,414 @@
+
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+
+    <!-- This code is needed for responsive design to work.
+      (Responsive design = make the website look good on
+      smaller screen sizes like a phone or a tablet). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Load a font called Roboto from Google Fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <style>
+        .main {
+    max-width: 1000px;  
+    margin-top: 40px;
+    margin-bottom: 100px;
+  
+    /* margin-left: auto;
+       margin-right auto;
+       Is a trick for centering an element horizontally
+       without needing a container. */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .page-title {
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  .header {
+    background-color: rgb(17, 41, 69);
+    color: white;
+    margin-right: -9px;
+    height: 70px;
+    margin-left: -9px;
+    margin-top: -22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    width: auto;
+    padding: 0 20px;
+}
+
+.checkout-header-middle-section {
+    font-size: 20px;
+    width: auto; /* Adjust width to auto to fit content */
+    padding: 20px;
+    margin-top: 6px;
+}
+
+
+.headerinside
+        {
+            padding:5px;
+            margin-left: -10px;
+           
+        }
+  
+  .checkout-grid {
+    display: grid;
+    /* Here, 1fr means the first column will take
+       up the remaining space in the grid. */
+    grid-template-columns: 1fr 300px;
+    column-gap: 12px;
+  
+    /* Use align-items: start; to prevent the elements
+       in the grid from stretching vertically. */
+    align-items: start;
+  }
+  
+  @media (max-width: 1000px) {
+    .main {
+      max-width: 100px;
+    }
+  
+    .checkout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .cart-item-container,
+  .payment-summary {
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 4px;
+    padding: 18px;
+  }
+  
+  .cart-item-container {
+    margin-bottom: 12px;
+  }
+  
+  .payment-summary {
+    padding-bottom: 5px;
+  }
+  
+  @media (max-width: 700px) {
+    .payment-summary {
+      /* grid-row: 1 means this element will be placed into row
+        1 in the grid. (Normally, the row that an element is
+        placed in is determined by the order of the elements in
+        the HTML. grid-row overrides this default ordering). */
+      grid-row: 1;
+      margin-bottom: 12px;
+    }
+  }
+  
+  .delivery-date {
+    color: rgb(0, 118, 0);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 5px;
+    margin-bottom: 22px;
+  }
+  
+  .cart-item-details-grid {
+    display: grid;
+    /* 100px 1fr 1fr; means the 2nd and 3rd column will
+       take up half the remaining space in the grid
+       (they will divide up the remaining space evenly). */
+    grid-template-columns: 200px 1fr 1fr;
+    column-gap: 25px;
+  }
+  
+  @media (max-width: 300px) {
+    .cart-item-details-grid {
+      grid-template-columns: 100px 1fr;
+      row-gap: 30px;
+    }
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 120px;
+  
+    /* margin-left: auto;
+       margin-right auto;
+       Is a trick for centering an element horizontally
+       without needing a container. */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .product-name {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .product-price {
+    color: rgb(177, 39, 4);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  .product-quantity .link-primary {
+    margin-left: 3px;
+  }
+  
+  @media (max-width: 1000px) {
+    .delivery-options {
+      /* grid-column: 1 means this element will be placed
+         in column 1 in the grid. (Normally, the column that
+         an element is placed in is determined by the order
+         of the elements in the HTML. grid-column overrides
+         this default ordering).
+         
+         / span 2 means this element will take up 2 columns
+         in the grid (Normally, each element takes up 1
+         column in the grid). */
+      grid-column: 1 / span 2;
+    }
+  }
+  
+  .delivery-options-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .delivery-options {
+    grid-column: span 3; /* Span all columns */
+    margin-top: 20px;
+}
+
+.delivery-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.delivery-option-input {
+    margin-right: 10px; /* Space between radio button and text */
+    cursor: pointer;
+}
+
+.delivery-option-date {
+    color: rgb(0, 118, 0);
+    font-weight: 500;
+    margin-bottom: 3px;
+    width: auto;
+}
+
+.delivery-option-price {
+    color: rgb(120, 120, 120);
+    font-size: 15px;
+}
+  
+  .payment-summary-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .payment-summary-row {
+    display: grid;
+    /* 1fr auto; means the width of the 2nd column will be
+       determined by the elements inside the column (auto).
+       The 1st column will take up the remaining space. */
+    grid-template-columns: 1fr auto;
+  
+    font-size: 15px;
+    margin-bottom: 9px;
+  }
+  
+  .payment-summary-money {
+    text-align: right;
+  }
+  
+  .subtotal-row .payment-summary-money {
+    border-top: 1px solid rgb(222, 222, 222);
+  }
+  
+  .subtotal-row div {
+    padding-top: 9px;
+  }
+  
+  .total-row {
+    color: rgb(177, 39, 4);
+    font-weight: 700;
+    font-size: 18px;
+  
+    border-top: 1px solid rgb(222, 222, 222);
+    padding-top: 18px;
+  }
+  
+.addbutton {
+    background: linear-gradient(45deg, #007bff, #1a879f); /* Gradient background */
+    border: 2px solid #0056b3; /* Darker blue border */
+    border-radius: 20px;
+    padding: 10px 30px; /* Shortened padding syntax */
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold; /* Fixed font-weight */
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 2px 3px rgba(0, 0, 255, 0.3); /* Blue shadow effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    position: relative;
+    overflow: hidden;
+}
+
+.addbutton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+.addbutton:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.addbutton:hover {
+    background: linear-gradient(45deg, #1a6677, #093768); /* Reverse gradient on hover */
+    border-color: #007bff;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 255, 0.5); /* Enhanced blue shadow effect */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+.addbutton span {
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+  
+  .return-to-home-link
+  {
+    text-decoration: none;
+    color: rgb(165, 215, 232);
+  }
+  .update-quantity-link
+  {
+    color: rgb(15, 115, 202);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .update-quantity-link:hover
+  {
+    color: red;
+  }
+  .delete-quantity-link
+  {
+    color: rgb(15, 115, 202);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .delete-quantity-link:hover
+  {
+    color: red;
+
+  }
+  .quantity-input
+  {
+    width: 30px;
+    display: none;
+  }
+  .save-quantity-link
+  {
+    color: rgb(15, 115, 202);
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+  }
+  .save-quantity-link:hover
+  {
+    color: red
+  }
+  .is-editing-quantity  {
+  .quantity-input,
+  .save-quantity-link {
+    display: initial;
+  }
+  .quantity-label,.update-quantity-link
+  {
+    display: none;
+  }
+}
+.pr-quantity
+{
+    color: rgb(15, 115, 202);
+    font-weight: bold;
+
+}
+
+    .message {
+    display: none;
+    color: rgb(255, 255, 255); /* Optional: You can customize the message style */
+    font-size: 16px;
+    position: fixed;
+    top: 100px; /* Adjust as needed */
+    right: 50px;
+    background-color: rgb(77, 169, 77); /* Optional: Background color */
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+    </style>
+
+
+<div class="header">
+    <h1 class="headerinside">VibeCart</h1>
+    <div class="checkout-header-middle-section">
+        Checkout (<a class="return-to-home-link js-cart-quantity-html"
+          href="amazon.html"></a>)
+      </div>
+</div>
+
+
+    <div class="main">
+      <div class="page-title">Review your order</div>
+
+      <div class="checkout-grid">
+        <div class="order-summary js-order-summary">
+         
+        </div>
+
+          
+
+          
+        <div class="payment-summary js-payment-summary">
+
+
+        </div>
+        <div class="message" id="saved-message">saved</div>
+      </div>
+    </div>
+
+   
+
+
+    <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
+    <script type="module" src="checkout.js"></script>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <style>
+        .header
+        {
+            background-color: rgb(17, 41, 69);
+            color: white;
+            margin-right: -9px; /* Extend width to cover the negative margin */
+            height: 70px;
+            margin-left: -9px; /* Offset the left margin */
+            margin-top: -22px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            padding: 0 20px; /* Add some horizontal padding */
+            top: 5px;
+        }
+
+        .headerinside
+        {
+            
+            left: 1350px;
+            position: fixed;
+           
+        }
+ 
+        .headerinside2 {
+    padding: 5px;
+    height: 40px; /* Adjust height as needed */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    margin-left: 500px;
+    padding-right: 10px;
+    width: 500px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    font-size: 16px; /* Adjust font size as needed */
+    position: absolute;
+}
+
+.headerinside3 {
+    background: linear-gradient(45deg, #007bff, #1a879f);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    height: 40px;
+    padding: 0 15px; /* Adjust padding for a better fit */
+    margin-top: 10px;
+    position: absolute;
+    left: calc(500px + 500px); /* Position based on the search bar width and margin-left */
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+
+}
+.headerinside3:hover
+{
+    background: linear-gradient(45deg, #3881d0, #00bee8); /* Reverse gradient on hover */
+    border-color: #007bff;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 255, 0.5); /* Enhanced blue shadow effect */
+    transform: scale(1.01); /* Slight scale-up effect */
+
+}
+
+
+
+        .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1px;
+    background-color: rgb(255, 255, 255);
+ 
+    padding: 10px;
+        }
+
+.grid-item {
+    color: rgb(0, 0, 0);
+            padding: 10px;
+             /* Include padding and border in width */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack image and text vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            text-align: center; /* Center text */
+            border: 2px solid rgb(155, 155, 155);
+    
+}
+.img
+{
+    width: 200px;
+    height: 200px;
+
+    display: block;
+    color: lightskyblue;
+    background-color: transparent;
+}
+.rating
+{
+    color: rgb(6, 121, 203);
+}
+.addbutton {
+    background: linear-gradient(45deg, #007bff, #1a879f); /* Gradient background */
+    border: 2px solid #0056b3; /* Darker blue border */
+    border-radius: 20px;
+    padding: 10px 30px; /* Shortened padding syntax */
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold; /* Fixed font-weight */
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 2px 3px rgba(0, 0, 255, 0.3); /* Blue shadow effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    position: relative;
+    overflow: hidden;
+}
+
+.addbutton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+.addbutton:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.addbutton:hover {
+    background: linear-gradient(45deg, #1a6677, #093768); /* Reverse gradient on hover */
+    border-color: #007bff;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 255, 0.5); /* Enhanced blue shadow effect */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+.addbutton span {
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+
+
+.carting {
+    width: 50px;
+    height: 50px;
+    size: 10px;
+    background-color: #1781c3; /* Bright blue background */
+    border-radius: 30%;
+    border-color: #1a879f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 40px;
+    top: 2px;
+    padding-left: 10px;
+    padding-right:10px;
+    color: #ffffff; /* White color for icon */
+    font-size: 24px; /* Adjust size as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+.carting::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+.carting:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.carting:hover {
+    background: linear-gradient(45deg, #68aaaa, #d8dada); /* Reverse gradient on hover */
+    border-color: #007bff;
+    box-shadow: 0 2px 6px rgba(0, 0, 255, 0.5); /* Enhanced blue shadow effect */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+
+.cquan {
+    color: rgb(165, 215, 232);
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    left: 120px;
+    top: 5px;
+}
+
+    
+.message {
+    display: none;
+    color: rgb(255, 255, 255); /* Optional: You can customize the message style */
+    font-size: 16px;
+    position: fixed;
+    top: 100px; /* Adjust as needed */
+    right: 50px;
+    background-color: rgb(77, 169, 77); /* Optional: Background color */
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+
+
+       </style>
+        
+
+    </head>
+    <body>
+        <div class="header">
+            <h1 class="headerinside">VibeCart</h1>
+            <input class="headerinside2" placeholder="search">
+            <img class="headerinside3" src="/amazonjsfiles/searchicon.png" ></img>
+            <a href="checkout.html">
+                <img src="/amazonjsfiles/cartimage.png" class="carting js-carting">
+            <div class="cquan">
+                <a class="return-to-home-link js-cart-quantity-html"
+          href="checkout.html"></a>
+                
+            </div>
+            </a>
+            
+        </div>
+
+        <div class="message" id="added-message">added to cart</div>
+        
+        <div class="grid-container js-product-grid">
+            
+
+        </div>
+
+
+    </body>
+</html>
+
+<script type="module" src="./amazonjsfiles/amazon.js"></script>
+
+
